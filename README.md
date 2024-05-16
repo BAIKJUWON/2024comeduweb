@@ -3,7 +3,7 @@
 ## COMEDUWEB PROJECT
 - 컴에듀웹 동아리 실습을 위한 페이지 입니다.
   
-## [1주차: HTML 기본 개념](https://github.com/BAIKJUWON/2024comeduweb/blob/main/1%EC%A3%BC%EC%B0%A8%20HTML%20%EA%B8%B0%EB%B3%B8%20%EA%B0%9C%EB%85%90/1.pdf)
+## [1주차: HTML 기본 개념](https://github.com/BAIKJUWON/2024comeduweb/blob/main/1/%E1%84%89%E1%85%AE%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%A9%E1%86%AB.pdf)
 ### 강의 내용
 - HTML의 개요 및 역사
 - HTML 문서의 기본 구조
