@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>comeduweb</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 공통 스타일 */
+        body {
+            margin: 0;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* 네비게이션 바 */
+        .navbar {
+            background-color: #343a40;
+        }
+
+        .navbar-brand, .nav-link {
+            color: #fff;
+        }
+
+        .nav-link:hover {
+            color: #adb5bd;
+        }
+
+        /* 헤더 섹션 */
+        header.bg-dark {
+            background-color: #343a40;
+            padding: 2rem 0;
+        }
+
+        h1.display-5 {
+            color: #fff;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        p.lead {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* 공지사항 섹션 */
+        .notice-section {
+            margin-top: 50px;
+        }
+
+        /* 푸터 섹션 */
+        footer.bg-dark {
+            background-color: #343a40;
+            color: white;
+            padding: 1rem 0;
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        footer a:hover {
+            color: rgba(255, 255, 255, 0.75);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">comeduweb</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dongsogae">동아리 소개</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/web3">운영진</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/board">게시판</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dm">문의</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="bg-dark py-5">
+        <div class="container px-5">
+            <div class="row gx-5 align-items-center justify-content-center">
+                <div class="col-lg-8 col-xl-7 col-xxl-6">
+                    <div class="my-5 text-center text-xl-start">
+                        <h1 class="display-5 fw-bolder text-white mb-2">미래교육 학습 동아리 COMEDUWEB 입니다.</h1>
+                        <p class="lead fw-normal text-white-50 mb-4">COMEDUWEB은 국립안동대학교 컴퓨터교육과 재학생으로 구성되어 활동하고 있습니다.</p>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
+                    <img class="img-fluid rounded-3 my-5" src="{{ url_for('uploaded_file', filename='ma.jpg') }}" alt="미래교육 학습 동아리 이미지" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Notice Section -->
+    <section class="notice-section">
+        <div class="container">
+            <h2>공지사항</h2>
+            <div class="list-group">
+                {% for post_id, post in notices.items() %}
+                    <a href="{{ url_for('post', post_id=post_id) }}" class="list-group-item list-group-item-action">
+                        <h5 class="mb-1">{{ post['title'] }}</h5>
+                        <p class="mb-1">{{ post['content'][:100] }}...</p>
+                    </a>
+                {% else %}
+                    <p>공지사항이 없습니다.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Club Introduction Section -->
+    <section class="club-intro-section bg-light py-5">
+        <div class="container">
+            <h2 class="mb-4 text-center">동아리 소개</h2>
+            <div class="row text-center">
+                <!-- Club Introduction -->
+                <div class="col-md-3">
+                    <div class="card p-3">
+                        <div class="card-body">
+                            <img src="{{ url_for('uploaded_file', filename='1.png') }}" alt="소개 아이콘" style="width: 50px; height: 50px;">
+                            <h5 class="card-title mt-3">소개</h5>
+                            <p class="card-text">COMEDUWEB은 컴퓨터교육과 과 동아리 입니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Club Benefits -->
+                <div class="col-md-3">
+                    <div class="card p-3">
+                        <div class="card-body">
+                            <img src="{{ url_for('uploaded_file', filename='2.png') }}" alt="혜택 아이콘" style="width: 50px; height: 50px;">
+                            <h5 class="card-title mt-3">혜택</h5>
+                            <p class="card-text">동아리 간식제공, 충전기 제공, 동아리컴퓨터 자리대여</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Club Activities -->
+                <div class="col-md-3">
+                    <div class="card p-3">
+                        <div class="card-body">
+                            <img src="{{ url_for('uploaded_file', filename='3.png') }}" alt="활동 아이콘" style="width: 50px; height: 50px;">
+                            <h5 class="card-title mt-3">활동</h5>
+                            <p class="card-text">웹 프로그래밍, EDUTECH</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Club Inquiry -->
+                <div class="col-md-3">
+                    <div class="card p-3">
+                        <div class="card-body">
+                            <img src="{{ url_for('uploaded_file', filename='4.png') }}" alt="문의 아이콘" style="width: 50px; height: 50px;">
+                            <h5 class="card-title mt-3">문의</h5>
+                            <p class="card-text">카카오톡 : bjww</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer Section -->
+    <footer class="bg-dark py-4">
+        <div class="container">
+            <p class="text-white text-center mb-0">&copy; 2024 COMEDUWEB. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.1/font/bootstrap-icons.min.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>comeduweb 게시판</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 56px;
+        }
+        .navbar {
+            background-color: #343a40;
+        }
+        .navbar-brand, .nav-link {
+            color: #fff;
+        }
+        .nav-link:hover {
+            color: #adb5bd;
+        }
+        .section {
+            padding: 3rem 0;
+        }
+        .bg-light-blue {
+            background-color: #e3f2fd;
+        }
+        .bg-light-green {
+            background-color: #e8f5e9;
+        }
+        .bg-light-yellow {
+            background-color: #fffde7;
+        }
+        .bg-light-orange {
+            background-color: #fff3e0;
+        }
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .section-content {
+            font-size: 1rem;
+            color: #343a40;
+        }
+        .post-list {
+            padding-left: 0;
+            list-style: none;
+        }
+        .post-list li {
+            margin-bottom: 10px;
+        }
+        .post-list li a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .post-list li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">comeduweb</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">홈</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dongsogae">동아리 소개</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/web3">운영진</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/board">게시판</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dm">문의</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- 공지사항 -->
+    <section id="section1" class="section bg-light-blue">
+        <div class="container">
+            <h2 class="section-title">공지사항</h2>
+            <ul class="post-list">
+                <!-- 각 게시물의 제목을 클릭하면 새로운 페이지로 이동 -->
+                {% for post_id, post in data.items() if post['category'] == '공지사항' %}
+                <li>
+                    <a href="{{ url_for('post', post_id=post_id) }}">{{ post['title'] }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <!-- 진행상황 -->
+    <section id="section2" class="section bg-light-green">
+        <div class="container">
+            <h2 class="section-title">진행상황</h2>
+            <ul class="post-list">
+                <!-- 진행상황 카테고리 게시물 -->
+                {% for post_id, post in data.items() if post['category'] == '진행상황' %}
+                <li>
+                    <a href="{{ url_for('post', post_id=post_id) }}">{{ post['title'] }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <!-- EDUTECH -->
+    <section id="section3" class="section bg-light-yellow">
+        <div class="container">
+            <h2 class="section-title">EDUTECH</h2>
+            <ul class="post-list">
+                <!-- EDUTECH 카테고리 게시물 -->
+                {% for post_id, post in data.items() if post['category'] == 'EDUTECH' %}
+                <li>
+                    <a href="{{ url_for('post', post_id=post_id) }}">{{ post['title'] }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <!-- WEB 프로젝트 -->
+    <section id="section4" class="section bg-light-orange">
+        <div class="container">
+            <h2 class="section-title">WEB 프로젝트</h2>
+            <ul class="post-list">
+                <!-- WEB 프로젝트 카테고리 게시물 -->
+                {% for post_id, post in data.items() if post['category'] == 'WEB 프로젝트' %}
+                <li>
+                    <a href="{{ url_for('post', post_id=post_id) }}">{{ post['title'] }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>comeduweb 동아리 홈페이지</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            padding-top: 80px; /* 네비게이션 바 높이만큼 여백 추가 */
+        }
+
+        /* 동아리 소개 섹션 */
+        section#about {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: justify; /* 텍스트 정렬 */
+        }
+
+        section#about h2 {
+            font-size: 28px;
+            color: #0056b3;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        section#about p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        section#about h3 {
+            font-size: 22px;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+        }
+
+        section#about ul {
+            list-style-type: disc;
+            margin-left: 40px;
+        }
+
+        section#about ul li {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        section#about ul li strong {
+            color: #0056b3;
+        }
+
+        /* Add hover effects to lists */
+        section#about ul li:hover {
+            background-color: #f0f8ff;
+            padding-left: 10px;
+            border-left: 3px solid #0056b3;
+            transition: all 0.3s ease;
+        }
+
+        /* 이미지 스타일링 */
+        .curriculum-image {
+            display: block;
+            margin: 20px auto; /* 이미지를 가운데 정렬 */
+            max-width: 400px; /* 이미지 크기 */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .curriculum-content {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .curriculum-text {
+            flex: 1;
+            margin-left: 20px; /* 텍스트와 이미지 사이에 여백 추가 */
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Bootstrap Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">comeduweb</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">홈</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dongsogae">동아리 소개</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/web3">운영진</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/board">게시판</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dm">문의</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>comeduweb 동아리 소개</h2>
+        <p>COMEDUWEB은 국립안동대학교 사범대학 컴퓨터교육과에 개설되어 있는 미래교육 학습 동아리입니다.</p>
+        <p>2022 개정 교육과정 (중등교육) '정보 컴퓨터' 과목과 디지털 교육을 결합한 에듀테크, 미래교육을 연구하는 연구실(동아리)입니다.</p>
+        <p>또한 웹 프로그래밍을 진행하여 다양한 에듀테크에 활용하도록 목표하고 있습니다.</p>
+
+        <h3>[ 2022 개정 교육과정 (중등교육) 총론 핵심역량 '정보 컴퓨터' 과목 하위역량 ]</h3>
+        <!-- 이미지 경로를 Flask에서 서빙하는 경로로 설정 -->
+        <img src="{{ url_for('uploaded_file', filename='information.jpg') }}" alt="동아리 이미지" class="curriculum-image">
+        
+        <div class="curriculum-content">
+            <div class="curriculum-text">
+                <ul>
+                    <li><strong>컴퓨팅 사고력:</strong> 컴퓨팅을 활용한 문제 해결을 전제로 문제를 발견, 분석하여 실생활과 다양한 학문 분야의 문제를 해결하는 데 새로운 방법론을 제시할 수 있는 능력</li>
+                    <li><strong>디지털 문화 소양:</strong> 인간과 인공지능의 공존을 모색하는 사람 중심의 인공지능 윤리의식과 데이터에 대한 이해를 기반으로 인공지능을 통해 문제를 해결할 수 있는 능력</li>
+                    <li><strong>인공지능 소양:</strong> 디지털 사회의 구성원으로서의 윤리의식과 시민성을 갖추고 디지털 기술을 기반으로 의사소통하고 협업하는 능력</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>[ 활동 성과 ]</h3>
+        <ul>
+            <li>국립안동대학교 학생역량강화센터 주관 '학생그룹 역량강화 시너지 프로그램 (전공 선배 멘토링 부분)' 참가 (2023.08.)</li>
+            <li>국립안동대학교 학생역량강화센터 주관 '학생그룹 역량강화 시너지 프로그램 (챌린지 스터디 부분)' 참가 (2023.08.)</li>
+            <li>국립안동대학교 사범대학 미래교육센터 주관 '미래교육 학습 동아리 프로그램' 참가 (2023.09. ~ 
