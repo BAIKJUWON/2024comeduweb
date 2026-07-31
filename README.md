@@ -241,26 +241,6 @@ python 실행파일명.py
 http://127.0.0.1:5000
 ```
 
----
-
-## 기존 디렉터리 유지
-
-이 README는 현재 저장소의 디렉터리와 파일 구성을 변경하지 않는 것을 기준으로 작성했습니다.
-
-추가한 화면 이미지는 저장소 루트에 다음 이름으로 올리면 됩니다.
-
-```text
-comeduweb-main.png
-comeduweb-about.png
-comeduweb-members.png
-comeduweb-board.png
-comeduweb-contact.png
-README.md
-```
-
-기존 HTML, CSS, JavaScript, Python, 데이터베이스 파일은 이동하거나 이름을 변경할 필요가 없습니다.
-
----
 
 ## 기술적 회고
 
